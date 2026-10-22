@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «PDF»: ENC-07 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.encryption.PdfController"
+      styleClass="screen" spacing="12">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <Label text="%enc.pdf.intro" styleClass="muted" wrapText="true"/>
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label fx:id="pdfLabel" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="choosePdfButton" text="%common.choose"/>
+    </HBox>
+    <Label fx:id="stateLabel" styleClass="section-title"/>
+
+    <GridPane hgap="10" vgap="8">
+        <Label text="%enc.password" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <PasswordField fx:id="passwordField" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label text="%enc.confirmPassword" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <PasswordField fx:id="confirmField" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label text="%enc.pdf.confirmHint" styleClass="muted" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+    </GridPane>
+
+    <HBox fx:id="actions" spacing="8">
+        <Button text="%enc.pdf.lock" onAction="#lock" styleClass="primary"/>
+        <Button text="%enc.pdf.unlock" onAction="#unlock"/>
+    </HBox>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>

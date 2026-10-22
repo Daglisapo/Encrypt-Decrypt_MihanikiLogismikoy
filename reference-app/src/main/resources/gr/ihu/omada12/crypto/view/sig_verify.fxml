@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Επαλήθευση»: SIG-03, SIG-06 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.signature.VerifyController"
+      styleClass="screen" spacing="12">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <Label text="%sig.verify.intro" styleClass="muted" wrapText="true"/>
+    <GridPane fx:id="actions" hgap="10" vgap="10">
+        <Label text="%sig.file" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="documentLabel" prefWidth="520" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Button fx:id="chooseDocument" text="%common.choose" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Label text="%sig.sigFile" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="signatureLabel" prefWidth="520" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Button fx:id="chooseSignature" text="%common.choose" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Label text="%sig.publicKey" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="publicKeyLabel" prefWidth="520" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Button fx:id="choosePublicKey" text="%common.choose" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <Button fx:id="verifyButton" text="%sig.verify.button" onAction="#verify" styleClass="primary" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <Label fx:id="resultLabel" styleClass="result" wrapText="true"/>
+    <GridPane hgap="10" vgap="6" styleClass="card">
+        <Label text="%sig.verify.signedAt" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="signedAtValue" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label text="%sig.fingerprint" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="fingerprintValue" styleClass="mono" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label text="%sig.verify.keyMatch" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="keyMatchValue" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    </GridPane>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>

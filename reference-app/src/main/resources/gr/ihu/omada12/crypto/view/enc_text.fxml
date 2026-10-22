@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Κείμενο»: ENC-01, ENC-02, ENC-03, ENC-08, ENC-09 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.encryption.TextCryptoController"
+      styleClass="screen" spacing="10">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="%enc.algorithm"/>
+        <ComboBox fx:id="algorithmBox" prefWidth="200"/>
+        <PasswordField fx:id="passwordField" promptText="%enc.passwordPrompt" prefWidth="260"/>
+        <TextField fx:id="keyField" promptText="%enc.keyPrompt" prefWidth="360"/>
+        <HBox fx:id="keyButtons" spacing="6">
+            <Button text="%enc.key.generate" onAction="#generateKey"/>
+            <Button text="%enc.key.save" onAction="#saveKey"/>
+            <Button text="%enc.key.load" onAction="#loadKey"/>
+        </HBox>
+    </HBox>
+    <Label fx:id="hintLabel" styleClass="muted" wrapText="true"/>
+
+    <Label text="%enc.text.input" styleClass="section-title"/>
+    <TextArea fx:id="inputArea" wrapText="true" promptText="%enc.text.inputPrompt" VBox.vgrow="ALWAYS"/>
+
+    <HBox fx:id="actions" spacing="8">
+        <Button fx:id="encryptButton" text="%enc.encrypt" onAction="#encrypt" styleClass="primary" defaultButton="true"/>
+        <Button fx:id="decryptButton" text="%enc.decrypt" onAction="#decrypt"/>
+        <Button fx:id="swapButton" text="%enc.text.swap" onAction="#swap"/>
+    </HBox>
+
+    <Label text="%enc.text.output" styleClass="section-title"/>
+    <TextArea fx:id="outputArea" wrapText="true" editable="false" VBox.vgrow="ALWAYS"/>
+    <HBox spacing="8">
+        <Button text="%enc.text.copy" onAction="#copy"/>
+        <Button text="%enc.text.save" onAction="#saveOutput"/>
+    </HBox>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>

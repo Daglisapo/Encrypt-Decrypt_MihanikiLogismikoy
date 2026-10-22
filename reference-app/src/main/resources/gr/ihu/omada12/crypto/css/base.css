@@ -1,0 +1,198 @@
+/* Κοινή εμφάνιση (APP-07). Τα χρώματα ορίζονται ως μεταβλητές στο light.css / dark.css,
+   και το -o12-accent έρχεται από τις ρυθμίσεις του χρήστη (ThemeManager). */
+
+.root {
+    -fx-font-family: "Segoe UI", "Noto Sans", "DejaVu Sans", sans-serif;
+    -fx-font-size: 13px;
+    -o12-accent: #2f6fdf;
+}
+
+.app-root {
+    -fx-background-color: -o12-bg;
+}
+
+.top-bar {
+    -fx-background-color: -o12-surface;
+    -fx-border-color: transparent transparent -o12-border transparent;
+}
+
+.screen-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -o12-text;
+    -fx-padding: 0 0 0 12;
+}
+
+.help-button {
+    -fx-font-weight: bold;
+    -fx-background-radius: 16;
+    -fx-min-width: 32;
+    -fx-min-height: 32;
+}
+
+.screen {
+    -fx-background-color: -o12-bg;
+}
+
+.hero-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -o12-text;
+}
+
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -o12-text;
+}
+
+.muted {
+    -fx-text-fill: -o12-muted;
+}
+
+.warning {
+    -fx-text-fill: -o12-warning;
+    -fx-font-weight: bold;
+}
+
+.mono, .big-mono {
+    -fx-font-family: "Consolas", "DejaVu Sans Mono", monospace;
+}
+
+.big-mono {
+    -fx-font-size: 22px;
+    -fx-text-fill: -o12-accent;
+}
+
+.card {
+    -fx-background-color: -o12-surface;
+    -fx-background-radius: 10;
+    -fx-border-color: -o12-border;
+    -fx-border-radius: 10;
+    -fx-padding: 14;
+}
+
+/* Πλακίδια αρχικής οθόνης */
+.tile {
+    -fx-background-color: -o12-surface;
+    -fx-background-radius: 14;
+    -fx-border-color: -o12-border;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 20;
+    -fx-alignment: top-left;
+    -fx-cursor: hand;
+}
+
+.tile:hover {
+    -fx-border-color: -o12-accent;
+    -fx-border-width: 2;
+}
+
+.tile-icon {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -o12-accent;
+}
+
+.tile-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -o12-text;
+}
+
+.tile-text {
+    -fx-text-fill: -o12-muted;
+}
+
+/* Κουμπιά */
+.button.primary {
+    -fx-background-color: -o12-accent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button.danger {
+    -fx-background-color: -o12-error;
+    -fx-text-fill: white;
+}
+
+/* Ζώνη ρίψης αρχείων (ENC-06) */
+.drop-zone {
+    -fx-border-color: -o12-border;
+    -fx-border-style: segments(6, 4);
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-background-color: -o12-surface;
+    -fx-padding: 8 12;
+    -fx-text-fill: -o12-muted;
+    -fx-min-height: 34;
+}
+
+.drop-zone-large {
+    -fx-min-height: 90;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+}
+
+.drop-hover {
+    -fx-border-color: -o12-accent;
+    -fx-background-color: derive(-o12-accent, 85%);
+}
+
+.filter-bar {
+    -fx-padding: 6 0 6 0;
+}
+
+/* Μηνύματα (APP-04) */
+.status {
+    -fx-font-size: 13px;
+    -fx-padding: 4 0 0 0;
+}
+
+.status-ok {
+    -fx-text-fill: -o12-ok;
+}
+
+.status-error {
+    -fx-text-fill: -o12-error;
+    -fx-font-weight: bold;
+}
+
+.status-info {
+    -fx-text-fill: -o12-muted;
+}
+
+.result {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.result-valid {
+    -fx-text-fill: -o12-ok;
+}
+
+.result-invalid {
+    -fx-text-fill: -o12-error;
+}
+
+/* Μπάρα ισχύος κωδικού (VLT-01, LAB-07) */
+.progress-bar.strength-0 > .bar { -fx-background-color: #d64545; }
+.progress-bar.strength-1 > .bar { -fx-background-color: #e8833a; }
+.progress-bar.strength-2 > .bar { -fx-background-color: #e3c13b; }
+.progress-bar.strength-3 > .bar { -fx-background-color: #6cbf4a; }
+.progress-bar.strength-4 > .bar { -fx-background-color: #2e9d4a; }
+
+/* Η πιθανότερη λύση του brute force (LAB-05) */
+.table-row-cell.best-row {
+    -fx-background-color: derive(-o12-accent, 70%);
+    -fx-font-weight: bold;
+}
+
+.table-row-cell.best-row .text {
+    -fx-fill: black;
+}
+
+.tab-pane > .tab-header-area {
+    -fx-padding: 6 12 0 12;
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Ρυθμίσεις»: APP-06, APP-07, APP-08, APP-10, APP-12, VLT-08 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.general.SettingsController"
+      styleClass="screen" spacing="14">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <GridPane hgap="14" vgap="12" styleClass="card">
+        <Label text="%settings.language" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="languageBox" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label text="%settings.theme" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <ComboBox fx:id="themeBox" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label text="%settings.accent" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ColorPicker fx:id="accentPicker" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Label text="%settings.autoLock" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Spinner fx:id="autoLockSpinner" prefWidth="100" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <Label text="%settings.autoLockHint" styleClass="muted" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        <Label text="%settings.history" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <CheckBox fx:id="historyCheck" text="%settings.historyEnabled" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <Label text="%settings.dataFolder" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Label fx:id="dataFolderLabel" styleClass="mono" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="2"/>
+    </GridPane>
+    <Button text="%settings.showTutorial" onAction="#showTutorial"/>
+    <Label text="%settings.privacy" styleClass="muted" wrapText="true"/>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>

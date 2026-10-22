@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Απόκρυψη»: STG-01, STG-03, STG-04, STG-05, STG-06, NFR-08 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.stego.StegoHideController"
+      styleClass="screen" spacing="18">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+    <fx:define><ToggleGroup fx:id="modeGroup"/></fx:define>
+
+    <VBox spacing="10" prefWidth="520">
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Label fx:id="coverLabel" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="chooseCover" text="%common.choose"/>
+        </HBox>
+        <Label fx:id="formatWarning" styleClass="warning" wrapText="true"/>
+        <Label fx:id="capacityLabel" styleClass="muted" wrapText="true"/>
+
+        <HBox spacing="14">
+            <RadioButton fx:id="textMode" text="%stego.modeText" toggleGroup="$modeGroup" selected="true"/>
+            <RadioButton fx:id="fileMode" text="%stego.modeFile" toggleGroup="$modeGroup"/>
+        </HBox>
+        <TextArea fx:id="messageArea" promptText="%stego.messagePrompt" wrapText="true" prefRowCount="6" VBox.vgrow="ALWAYS"/>
+        <HBox fx:id="filePane" spacing="8" alignment="CENTER_LEFT">
+            <Label fx:id="secretLabel" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="chooseSecret" text="%common.choose"/>
+        </HBox>
+        <Label fx:id="usageLabel"/>
+
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <CheckBox fx:id="encryptCheck" text="%stego.encrypt"/>
+            <PasswordField fx:id="passwordField" promptText="%enc.passwordPrompt" prefWidth="220"/>
+        </HBox>
+        <HBox fx:id="actions">
+            <Button text="%stego.hide" onAction="#hide" styleClass="primary"/>
+        </HBox>
+        <Label fx:id="statusLabel" styleClass="status"/>
+    </VBox>
+
+    <!-- STG-05: αρχική και νέα εικόνα δίπλα-δίπλα -->
+    <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="card">
+        <Label text="%stego.original" styleClass="section-title"/>
+        <ImageView fx:id="originalView" fitWidth="300" fitHeight="230" preserveRatio="true"/>
+        <Label text="%stego.result" styleClass="section-title"/>
+        <ImageView fx:id="resultView" fitWidth="300" fitHeight="230" preserveRatio="true"/>
+    </VBox>
+</HBox>

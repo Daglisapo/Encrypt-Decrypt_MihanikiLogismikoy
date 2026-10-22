@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Βήμα-βήμα»: LAB-09 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.lab.StepperController"
+      styleClass="screen" spacing="10">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+    <fx:define><ToggleGroup fx:id="algoGroup"/></fx:define>
+
+    <Label text="%lab.steps.intro" styleClass="muted" wrapText="true"/>
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <RadioButton fx:id="caesarRadio" text="Caesar" toggleGroup="$algoGroup" selected="true"/>
+        <RadioButton fx:id="vigenereRadio" text="Vigenère" toggleGroup="$algoGroup"/>
+        <TextField fx:id="textField" promptText="%lab.steps.textPrompt" text="HELLO WORLD" prefWidth="300"/>
+        <TextField fx:id="keyField" promptText="%lab.steps.keyPrompt" text="3" prefWidth="140"/>
+    </HBox>
+    <HBox spacing="8">
+        <Button fx:id="startButton" text="%lab.steps.start" onAction="#start" styleClass="primary"/>
+        <Button text="%lab.steps.next" onAction="#next"/>
+        <Button fx:id="allButton" text="%lab.steps.all" onAction="#all"/>
+    </HBox>
+    <Label fx:id="explanationLabel" styleClass="big-mono"/>
+    <HBox spacing="8"><Label text="%lab.steps.output"/><Label fx:id="outputLabel" styleClass="mono"/></HBox>
+    <TableView fx:id="stepsTable" VBox.vgrow="ALWAYS">
+        <placeholder><Label text="%lab.steps.placeholder" styleClass="muted"/></placeholder>
+        <columns>
+            <TableColumn fx:id="inputColumn" text="%lab.steps.col.input" prefWidth="140"/>
+            <TableColumn fx:id="keyColumn" text="%lab.steps.col.key" prefWidth="140"/>
+            <TableColumn fx:id="shiftColumn" text="%lab.steps.col.shift" prefWidth="120"/>
+            <TableColumn fx:id="outputColumn" text="%lab.steps.col.output" prefWidth="140"/>
+        </columns>
+    </TableView>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>

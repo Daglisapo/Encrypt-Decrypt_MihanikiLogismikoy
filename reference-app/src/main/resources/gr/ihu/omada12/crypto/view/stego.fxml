@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- UI-06 Στεγανογραφία: STG-01 … STG-06, NFR-08 -->
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+
+<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" tabClosingPolicy="UNAVAILABLE">
+    <Tab text="%stego.tab.hide"><fx:include source="stego_hide.fxml"/></Tab>
+    <Tab text="%stego.tab.reveal"><fx:include source="stego_reveal.fxml"/></Tab>
+</TabPane>

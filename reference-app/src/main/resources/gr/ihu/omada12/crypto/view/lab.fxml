@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- UI-07 Εργαστήριο: LAB-01 … LAB-09 -->
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+
+<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" tabClosingPolicy="UNAVAILABLE">
+    <Tab text="%lab.tab.bench"><fx:include source="lab_bench.fxml"/></Tab>
+    <Tab text="%lab.tab.caesar"><fx:include source="lab_caesar.fxml"/></Tab>
+    <Tab text="%lab.tab.password"><fx:include source="lab_password.fxml"/></Tab>
+    <Tab text="%lab.tab.steps"><fx:include source="lab_steps.fxml"/></Tab>
+</TabPane>

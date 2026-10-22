@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- UI-08 Γενικές λειτουργίες: APP-06 … APP-12 -->
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+
+<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" tabClosingPolicy="UNAVAILABLE">
+    <Tab text="%general.tab.settings"><fx:include source="settings.fxml"/></Tab>
+    <Tab text="%general.tab.history"><fx:include source="history.fxml"/></Tab>
+</TabPane>

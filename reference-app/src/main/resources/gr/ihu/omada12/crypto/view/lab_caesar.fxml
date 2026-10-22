@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Κρυπτανάλυση Caesar»: LAB-05, LAB-06 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.lab.CaesarLabController"
+      styleClass="screen" spacing="10">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <Label text="%lab.caesar.intro" styleClass="muted" wrapText="true"/>
+    <TextArea fx:id="cipherText" promptText="%lab.caesar.prompt" wrapText="true" prefRowCount="3"/>
+    <HBox spacing="8">
+        <Button fx:id="crackButton" text="%lab.caesar.crack" onAction="#crack" styleClass="primary"/>
+        <Button fx:id="sampleButton" text="%lab.caesar.sample" onAction="#sample"/>
+    </HBox>
+    <HBox spacing="14" VBox.vgrow="ALWAYS">
+        <TableView fx:id="candidates" HBox.hgrow="ALWAYS" prefWidth="560">
+            <placeholder><Label text="%lab.caesar.placeholder" styleClass="muted"/></placeholder>
+            <columns>
+                <TableColumn fx:id="shiftColumn" text="%lab.caesar.col.shift" prefWidth="70"/>
+                <TableColumn fx:id="textColumn" text="%lab.caesar.col.text" prefWidth="380"/>
+                <TableColumn fx:id="scoreColumn" text="%lab.caesar.col.score" prefWidth="80"/>
+            </columns>
+        </TableView>
+        <BarChart fx:id="frequencyChart" title="%lab.caesar.chartTitle" HBox.hgrow="ALWAYS" prefWidth="520"
+                  barGap="1" categoryGap="4">
+            <xAxis><CategoryAxis/></xAxis>
+            <yAxis><NumberAxis label="%lab.caesar.percent"/></yAxis>
+        </BarChart>
+    </HBox>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>

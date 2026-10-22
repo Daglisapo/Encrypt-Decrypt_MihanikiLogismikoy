@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Σύγκριση αλγορίθμων»: LAB-01, LAB-02, LAB-03, LAB-04 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.lab.BenchmarkController"
+      styleClass="screen" spacing="10">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <HBox spacing="18">
+        <VBox fx:id="actions" spacing="8" prefWidth="420">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label fx:id="fileLabel" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="chooseFile" text="%common.choose"/>
+            </HBox>
+            <Label text="%lab.bench.algorithms" styleClass="section-title"/>
+            <VBox fx:id="algorithmBox" spacing="4"/>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="%lab.bench.repetitions"/>
+                <Spinner fx:id="repetitions" prefWidth="90" editable="true"/>
+            </HBox>
+            <HBox spacing="8">
+                <Button fx:id="runButton" text="%lab.bench.run" onAction="#run" styleClass="primary"/>
+                <Button text="%lab.bench.exportCsv" onAction="#exportCsv"/>
+            </HBox>
+        </VBox>
+        <VBox spacing="8" HBox.hgrow="ALWAYS">
+            <TableView fx:id="resultsTable" prefHeight="170">
+                <placeholder><Label text="%lab.bench.placeholder" styleClass="muted"/></placeholder>
+                <columns>
+                    <TableColumn fx:id="algorithmColumn" text="%lab.bench.col.algorithm" prefWidth="170"/>
+                    <TableColumn fx:id="encryptColumn" text="%lab.bench.col.enc" prefWidth="110"/>
+                    <TableColumn fx:id="decryptColumn" text="%lab.bench.col.dec" prefWidth="110"/>
+                    <TableColumn fx:id="speedColumn" text="%lab.bench.col.speed" prefWidth="110"/>
+                    <TableColumn fx:id="outputColumn" text="%lab.bench.col.output" prefWidth="110"/>
+                </columns>
+            </TableView>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <ProgressBar fx:id="progressBar" progress="0" prefWidth="260"/>
+                <Button fx:id="cancelButton" text="%common.cancel"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <BarChart fx:id="chart" title="%lab.bench.chartTitle" VBox.vgrow="ALWAYS">
+        <xAxis><CategoryAxis label="%lab.bench.col.algorithm"/></xAxis>
+        <yAxis><NumberAxis label="MB/s"/></yAxis>
+    </BarChart>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>

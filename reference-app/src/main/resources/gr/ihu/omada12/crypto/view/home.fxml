@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- UI-01 Αρχική οθόνη: APP-01, APP-03 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.HomeController"
+      styleClass="screen" spacing="18">
+    <padding><Insets top="24" right="32" bottom="24" left="32"/></padding>
+
+    <Label text="%home.welcome" styleClass="hero-title"/>
+    <Label text="%home.subtitle" styleClass="muted" wrapText="true"/>
+
+    <GridPane hgap="18" vgap="18" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="33.3"/>
+            <ColumnConstraints percentWidth="33.3"/>
+            <ColumnConstraints percentWidth="33.3"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints percentHeight="50" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="50" vgrow="ALWAYS"/>
+        </rowConstraints>
+
+        <Button fx:id="encryptionTile" onAction="#openEncryption" styleClass="tile" maxWidth="Infinity" maxHeight="Infinity"
+                GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <graphic>
+                <VBox spacing="8">
+                    <Label text="%home.section.1" styleClass="tile-icon"/>
+                    <Label text="%module.encryption" styleClass="tile-title"/>
+                    <Label text="%home.tile.encryption" styleClass="tile-text" wrapText="true"/>
+                </VBox>
+            </graphic>
+        </Button>
+        <Button fx:id="vaultTile" onAction="#openVault" styleClass="tile" maxWidth="Infinity" maxHeight="Infinity"
+                GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <graphic>
+                <VBox spacing="8">
+                    <Label text="%home.section.2" styleClass="tile-icon"/>
+                    <Label text="%module.vault" styleClass="tile-title"/>
+                    <Label text="%home.tile.vault" styleClass="tile-text" wrapText="true"/>
+                </VBox>
+            </graphic>
+        </Button>
+        <Button fx:id="signatureTile" onAction="#openSignature" styleClass="tile" maxWidth="Infinity" maxHeight="Infinity"
+                GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <graphic>
+                <VBox spacing="8">
+                    <Label text="%home.section.3" styleClass="tile-icon"/>
+                    <Label text="%module.signature" styleClass="tile-title"/>
+                    <Label text="%home.tile.signature" styleClass="tile-text" wrapText="true"/>
+                </VBox>
+            </graphic>
+        </Button>
+        <Button fx:id="stegoTile" onAction="#openStego" styleClass="tile" maxWidth="Infinity" maxHeight="Infinity"
+                GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <graphic>
+                <VBox spacing="8">
+                    <Label text="%home.section.4" styleClass="tile-icon"/>
+                    <Label text="%module.stego" styleClass="tile-title"/>
+                    <Label text="%home.tile.stego" styleClass="tile-text" wrapText="true"/>
+                </VBox>
+            </graphic>
+        </Button>
+        <Button fx:id="labTile" onAction="#openLab" styleClass="tile" maxWidth="Infinity" maxHeight="Infinity"
+                GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <graphic>
+                <VBox spacing="8">
+                    <Label text="%home.section.5" styleClass="tile-icon"/>
+                    <Label text="%module.lab" styleClass="tile-title"/>
+                    <Label text="%home.tile.lab" styleClass="tile-text" wrapText="true"/>
+                </VBox>
+            </graphic>
+        </Button>
+        <Button fx:id="generalTile" onAction="#openGeneral" styleClass="tile" maxWidth="Infinity" maxHeight="Infinity"
+                GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <graphic>
+                <VBox spacing="8">
+                    <Label text="%home.section.6" styleClass="tile-icon"/>
+                    <Label text="%module.general" styleClass="tile-title"/>
+                    <Label text="%home.tile.general" styleClass="tile-text" wrapText="true"/>
+                </VBox>
+            </graphic>
+        </Button>
+    </GridPane>
+
+    <HBox alignment="CENTER_RIGHT">
+        <Button fx:id="exitButton" text="%home.exit" onAction="#exit" styleClass="danger"/>
+    </HBox>
+</VBox>

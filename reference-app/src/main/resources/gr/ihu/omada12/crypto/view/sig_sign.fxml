@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Υπογραφή»: SIG-02 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.signature.SignController"
+      styleClass="screen" spacing="12">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <Label text="%sig.sign.intro" styleClass="muted" wrapText="true"/>
+    <GridPane fx:id="actions" hgap="10" vgap="10">
+        <Label text="%sig.file" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="documentLabel" prefWidth="520" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Button fx:id="chooseDocument" text="%common.choose" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Label text="%sig.privateKey" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="keyLabel" prefWidth="520" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Button fx:id="chooseKey" text="%common.choose" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Label text="%sig.keyPassword" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Button text="%sig.sign.button" onAction="#sign" styleClass="primary" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+    <Label fx:id="detailsLabel" styleClass="mono" wrapText="true"/>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>

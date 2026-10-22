@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- UI-03 Θησαυροφυλάκια: VLT-01, VLT-02, VLT-11, VLT-12, NFR-04 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.vault.VaultListController"
+      styleClass="screen" spacing="20">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <!-- Αριστερά: υπάρχοντα θησαυροφυλάκια -->
+    <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="card">
+        <Label text="%vault.list.title" styleClass="section-title"/>
+        <ListView fx:id="vaultList" VBox.vgrow="ALWAYS"/>
+        <VBox fx:id="listActions" spacing="8">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <PasswordField fx:id="unlockPassword" promptText="%vault.list.masterPrompt" prefWidth="260" onAction="#unlock"/>
+                <Button text="%vault.list.unlock" onAction="#unlock" styleClass="primary"/>
+            </HBox>
+            <HBox spacing="8">
+                <Button text="%vault.list.rename" onAction="#rename"/>
+                <Button text="%vault.list.delete" onAction="#delete" styleClass="danger"/>
+            </HBox>
+        </VBox>
+        <Label fx:id="listStatus" styleClass="status"/>
+    </VBox>
+
+    <!-- Δεξιά: δημιουργία νέου -->
+    <VBox spacing="10" prefWidth="430" styleClass="card">
+        <Label text="%vault.create.title" styleClass="section-title"/>
+        <VBox fx:id="createForm" spacing="10">
+            <GridPane hgap="10" vgap="8">
+                <Label text="%vault.create.name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="%vault.create.password" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <PasswordField fx:id="newPassword" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="%vault.create.confirm" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <PasswordField fx:id="confirmPassword" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text="%vault.create.strength" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <ProgressBar fx:id="strengthBar" progress="0" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            </GridPane>
+            <Label fx:id="strengthLabel" styleClass="muted"/>
+            <Label text="%vault.create.noRecovery" styleClass="warning" wrapText="true"/>
+            <CheckBox fx:id="understandCheck" text="%vault.create.understand" wrapText="true"/>
+            <Button fx:id="createButton" text="%vault.create.button" onAction="#create" styleClass="primary"/>
+        </VBox>
+        <Label fx:id="createStatus" styleClass="status"/>
+    </VBox>
+</HBox>

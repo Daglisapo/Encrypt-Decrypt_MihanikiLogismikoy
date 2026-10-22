@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>gr.ihu.omada12</groupId>
+  <artifactId>crypto-app</artifactId>
+  <version>2.0</version>
+  <name>Omada 12 - Crypto Toolkit (reference app)</name>
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <javafx.version>21.0.4</javafx.version>
+    <pdfbox.version>3.0.3</pdfbox.version>
+    <junit.version>5.10.2</junit.version>
+    <!-- Ορίσματα για το mvn javafx:run (βλ. README, «Screenshots») -->
+    <app.args></app.args>
+    <omada12.buildDir>${project.basedir}/target</omada12.buildDir>
+  </properties>
+
+  <!--
+    Στα Windows το java.exe δεν δέχεται ελληνικούς χαρακτήρες στο classpath (κωδικοσελίδα Cp1252),
+    οπότε το «mvn javafx:run» αποτυγχάνει όταν το project είναι σε φάκελο όπως «Υπολογιστής».
+    Λύση: τα αρχεία build (target) γράφονται στο ~/.m2/omada12-build, που έχει μόνο λατινικούς χαρακτήρες.
+    Απενεργοποίηση: mvn -P !windows-ascii-build ...
+  -->
+  <profiles>
+    <profile>
+      <id>windows-ascii-build</id>
+      <activation>
+        <os><family>windows</family></os>
+      </activation>
+      <properties>
+        <omada12.buildDir>${user.home}/.m2/omada12-build/${project.artifactId}</omada12.buildDir>
+      </properties>
+    </profile>
+  </profiles>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>${javafx.version}</version>
+    </dependency>
+    <!-- Η μόνη εξωτερική βιβλιοθήκη: κλείδωμα PDF (ENC-07) -->
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>${pdfbox.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <directory>${omada12.buildDir}</directory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.8</version>
+        <configuration>
+          <mainClass>gr.ihu.omada12.crypto.App</mainClass>
+          <commandlineArgs>${app.args}</commandlineArgs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

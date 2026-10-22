@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- UI-05 Ψηφιακή υπογραφή: SIG-01 … SIG-06 -->
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+
+<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" tabClosingPolicy="UNAVAILABLE">
+    <Tab text="%sig.tab.keys"><fx:include source="sig_keys.fxml"/></Tab>
+    <Tab text="%sig.tab.sign"><fx:include source="sig_sign.fxml"/></Tab>
+    <Tab text="%sig.tab.verify"><fx:include source="sig_verify.fxml"/></Tab>
+    <Tab text="%sig.tab.hash"><fx:include source="sig_hash.fxml"/></Tab>
+</TabPane>

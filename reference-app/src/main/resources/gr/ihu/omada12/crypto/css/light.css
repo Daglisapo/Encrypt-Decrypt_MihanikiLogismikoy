@@ -1,0 +1,13 @@
+/* Φωτεινό θέμα (APP-07) */
+.root {
+    -o12-bg: #f4f6fa;
+    -o12-surface: #ffffff;
+    -o12-border: #d8dde6;
+    -o12-text: #1d2433;
+    -o12-muted: #5d6779;
+    -o12-ok: #1f8a3e;
+    -o12-error: #c62f2f;
+    -o12-warning: #b26a00;
+    -fx-base: #eef1f6;
+    -fx-background: #f4f6fa;
+}

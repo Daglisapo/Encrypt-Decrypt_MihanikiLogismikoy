@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Καρτέλα «Κλειδιά»: SIG-01, SIG-04, SIG-06 -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gr.ihu.omada12.crypto.controller.signature.SigKeysController"
+      styleClass="screen" spacing="14">
+    <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+    <VBox fx:id="actions" spacing="14">
+        <VBox spacing="8" styleClass="card">
+            <Label text="%sig.keys.newTitle" styleClass="section-title"/>
+            <GridPane hgap="10" vgap="8">
+                <Label text="%sig.keys.name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="keyNameField" promptText="%sig.keys.namePrompt" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="%enc.password" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <PasswordField fx:id="keyPassword" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="%enc.confirmPassword" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <PasswordField fx:id="keyConfirm" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <ProgressBar fx:id="strengthBar" progress="0" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Label fx:id="strengthLabel" styleClass="muted" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+            </GridPane>
+            <Button text="%sig.keys.generate" onAction="#generate" styleClass="primary"/>
+            <HBox spacing="8"><Label text="%sig.fingerprint"/><Label fx:id="fingerprintLabel" styleClass="mono"/></HBox>
+        </VBox>
+
+        <VBox spacing="8" styleClass="card">
+            <Label text="%sig.keys.exportTitle" styleClass="section-title"/>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label fx:id="privateKeyLabel" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="choosePrivateKey" text="%common.choose"/>
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <PasswordField fx:id="exportPassword" promptText="%sig.keyPasswordPrompt" prefWidth="280"/>
+                <Button text="%sig.keys.export" onAction="#exportPublic"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="8" styleClass="card">
+            <Label text="%sig.keys.importTitle" styleClass="section-title"/>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label fx:id="publicKeyLabel" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="choosePublicKey" text="%common.choose"/>
+            </HBox>
+            <HBox spacing="8"><Label text="%sig.fingerprint"/><Label fx:id="importedFingerprint" styleClass="mono"/></HBox>
+        </VBox>
+    </VBox>
+    <Label fx:id="statusLabel" styleClass="status"/>
+</VBox>
