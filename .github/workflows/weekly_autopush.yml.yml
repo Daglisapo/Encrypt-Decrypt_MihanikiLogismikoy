@@ -1,0 +1,49 @@
+name: Weekly Team Auto-Push
+
+on:
+  schedule:
+    # Τρέχει αυτόματα κάθε Τετάρτη στις 18:00 (ώρα Ελλάδας)
+    - cron: '0 16 * * 3'
+  workflow_dispatch:
+    inputs:
+      week_override:
+        description: 'Δώσε εβδομάδα χειροκίνητα (π.χ. E3, E4, E5, E6, E7, E8, E9)'
+        required: false
+
+jobs:
+  distribute-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Base Repo (Encrypt-Decrypt_MihanikiLogismikoy)
+        uses: actions/checkout@v4
+
+      - name: Clone Target Repo (omada12-crypto)
+        env:
+          TOKEN_NIKOS: ${{ secrets.TOKEN_NIKOS }}
+        run: |
+          git clone https://${TOKEN_NIKOS}@github.com/petros137/omada12-crypto.git target-repo
+
+      - name: Determine Current Week & Push Tasks
+        env:
+          TOKEN_ILIAS: ${{ secrets.TOKEN_ILIAS }}
+          TOKEN_LEONIDAS: ${{ secrets.TOKEN_LEONIDAS }}
+          TOKEN_APOSTOLOS: ${{ secrets.TOKEN_APOSTOLOS }}
+          TOKEN_NIKOS: ${{ secrets.TOKEN_NIKOS }}
+          OVERRIDE: ${{ github.event.inputs.week_override }}
+        run: |
+          if [ -n "$OVERRIDE" ]; then
+            WEEK="$OVERRIDE"
+          else
+            DATE=$(date +%Y%m%d)
+            if [ "$DATE" -le 20261101 ]; then WEEK="E3"
+            elif [ "$DATE" -le 20261108 ]; then WEEK="E4"
+            elif [ "$DATE" -le 20261115 ]; then WEEK="E5"
+            elif [ "$DATE" -le 20261122 ]; then WEEK="E6"
+            elif [ "$DATE" -le 20261129 ]; then WEEK="E7"
+            elif [ "$DATE" -le 20261206 ]; then WEEK="E8"
+            elif [ "$DATE" -le 20261213 ]; then WEEK="E9"
+            else WEEK="E10"
+            fi
+          fi
+          echo "Εκτέλεση αυτοματισμού για την εβδομάδα: $WEEK"
+          python3 .github/scripts/auto_builder.py "$WEEK"
